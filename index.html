@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <title>CrazyQuizz</title>
+</head>
+<body>
+    <div id="nav">
+      <h1>CRAZY QUIZZ</h1>
+      <img id="return-menu" src="resources/images/Home.png" alt="home logo" width="70px" height="60px">
+    </div>
+      <div id="player-selection" class="step">
+        <p>Choisissez le nombre de joueurs :</p>
+        <div id="player-button">
+          <button id="one-player">1 joueur</button>
+          <button id="two-player">2 joueurs</button>
+        </div>
+      </div>
+      <!-- <div id="timer">
+           <p>01:00</p>
+        </div>-->
+        <div id="category-selection" class="step">
+        <p>Choisissez une catégorie</p>
+        <div id="category-button">
+          <button id="category-1">Film & Séries</button>
+          <button id="category-2">Culture générale</button>
+          <button id="category-3">Sports</button>
+          <button id="category-4">Géographie</button>
+          <button id="category-5">Musique</button>
+          <button id="category-6">Faune et Flore</button>
+        </div>
+      </div>
+    <div id="question-container" class="color "class="step">
+        <h2 id="question-text">Question ici</h2>
+        <ul id="options-list">
+            <li><button id="option-1">Option 1</button></li>
+            <li><button id="option-2">Option 2</button></li>
+            <li><button id="option-3">Option 3</button></li>
+            <li><button id="option-4">Option 4</button></li>
+        </ul>
+        <p id="answer-text"></p>
+    </div>
+    <div id="show-result" class="step">
+        <div id="result-container">
+            <p id="result-text">Result text</p>
+            <button id="return-category">Retour categories</button>
+        </div>
+    </div>
+    <p id="points">Points : 0</p>
+      <script src="script.js"></script>
+</body>
+</html>
+
