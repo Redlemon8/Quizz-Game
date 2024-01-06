@@ -434,7 +434,6 @@ function startGameWithCategory(category, callback) {
       new Question('Quel est le premier succès musical de la chanteuse Céline Dion en 1981 ?', ['D\'amour ou d\'amitié', 'Ce n\'était qu\'un rêve', 'Ne partez pas sans moi', 'L\'amour viendra'], 'Ce n\'était qu\'un rêve'),
       new Question('Quelle chanson est considérée comme le premier tube de rap français en 1981 ?', ['Je danse le Mia', 'Chacun fait ce qu\'il lui plaît', 'Bouge de là', 'Paris Latino'], 'Chacun fait ce qu\'il lui plaît'),
       new Question('Quel type de bonbon n’est pas cité dans la chanson Mistral Gagnant de Renaud ?', ['Car-en-sac', 'Roudoudou', 'Carambar', 'Pimousse'], 'Pimousse'),
-      new Question('')
     ];
     break;
 
@@ -445,7 +444,7 @@ function startGameWithCategory(category, callback) {
       new Question('Quel est l\’animal terrestre le plus rapide du monde ?', ['L\'autruche', 'L\'antilope', 'Le kangourou', 'Le guépard'], 'Le guépard'),
       new Question('De quel arbre proviennent les feuilles dont les koalas sont très friands ?', ['Araucacia', 'Niaouli', 'Bambou', 'Eucalyptus'], 'Eucalyptus'),
       new Question('Lequel de ces oiseaux ne vole pas ?', ['Le toucan', 'Le kiwi', 'Le macareux', 'Le colibri'], 'Le kiwi'),
-      new Question('Lequel de ces légumes ne fait pas partie de la famille des légumes-tiges ?', ['Le poireau', 'La rhubarbe', L\'asperge', 'Le concombre'], 'Le concombre'),
+      new Question('Lequel de ces légumes ne fait pas partie de la famille des légumes-tiges ?', ['Le poireau', 'La rhubarbe', 'L\'asperge', 'Le concombre'], 'Le concombre'),
       new Question('Que fait la mante religieuse après l\'accouplement ?', ['Elle meurt', 'Elle dévore le mâle', 'Elle mue', 'Elle devient reine'], 'Elle dévore le mâle'),
       new Question('À quelle famille animale présente exclusivement en Afrique, le lycaon appartient-il ?', ['Canidés', 'Camélidés', 'Félidés', 'Equidés'], 'Canidés'),
       new Question('Quel serpent d’Afrique est considéré comme le serpent le plus dangereux au monde ?', ['Python de Seba', 'Vipère heurtante', 'Mamba noir', 'Cobra du Mozambique'], 'Mamba noir'),
