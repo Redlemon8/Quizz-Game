@@ -404,12 +404,37 @@ function startGameWithCategory(category, callback) {
       new Question('Quel pays possède plus de lacs, que tout le reste du monde réuni ?', ['Brésil', 'Russie', 'Canada', 'France'], 'Canada'),
       new Question('Pour quelle raison l\'île indienne de North Sentinel est-elle strictement interdite d’accès ?', ['L\'île possède des plantes extrêmement toxiques', 'L\'île est peuplée par une tribu de guerriers', 'L\'île possède un caractère sacré en Inde', 'L\'île est un lieu de reproduction privilégié des tortues marines'], 'L\'île est peuplée par une tribu de guerriers'),
       new Question('Qu’est-ce qui n’est pas illégal en Allemagne ?', ['Tuer ses parents', 'Voler pour manger', 'S\'évader de prison', 'Faire l\'amour en public'], 'S\'évader de prison'),
+      new Question('Quel pays possède un arbre sur son drapeau ?', ['Canada', 'Pérou', 'Liban', 'Sri Lanka'], 'Liban'),
     ];
     break;
 
     case 'category-5':     // Musique
     currentCategoryQuestions = [
       new Question('De quel groupe, la chanteuse Beyoncé a-t-elle fait partie jusqu’au début des années 2000 ?', ['Spice Girls', 'Destiny\'s Child', 'TLC', 'All Saints'], 'Destiny\'s Child'),
+      new Question('Quelle chanson en langue étrangère fait danser la France à partir de 1989 ?', ['La Lambada', 'La Macarena', 'Esereje', 'Tarzan Boy'], 'La Lambada'),
+      new Question('Avec quel rappeur, Luis Fonsi est-il accompagné pour sa chanson “Despacito” sortie à l’été 2017 ?', ['Daddy Cherokee', 'Daddy Yankee', 'Daddy Apache', 'Daddy Cow-boy'], 'Daddy Yankee'),
+      new Question('Quel groupe explose à l’été 2009 avec la chanson “Laisse-toi aller bébé” ?', ['Fatal Bazooka', 'Magic System', 'Sexion d\'Assaut', 'Collectif Métissé'], 'Collectif Métissé'),
+      new Question('Quel est l’instrument de musique préféré d’Assurancetourix dans Astérix ?', ['Une harpe', 'Une citare', 'Une lyre', 'Une corne de brume'], 'Une lyre'),
+      new Question('Combien de touches comporte généralement un piano à queue ?', ['88 touches', '94 touches', '98 touches', '104 touches'], '88 touches'),
+      new Question('De quel instrument Mstislav Rostropovitch a-t-il joué au pied du mur de Berlin le 11 novembre 1989 ?', ['Contrebasse', 'Violoncelle', 'Piano', 'Guitare'], 'Violoncelle'),
+      new Question('En quelle matière sont faites les flûtes de pan traditionnelles d’Amérique du Sud ?', ['Bambou', 'Canne à sucre', 'Roseau', 'Acajou'], 'Roseau'),
+      new Question('Quelle est la dernière artiste à avoir remporté l’Eurovision pour la France ?', ['Marie Myriam', 'Frida Boccara', 'Amina', 'Anggun'], 'Marie Myriam'),
+      new Question('Quelle chanson ayant remporté le concours de l’Eurovision a été écrite par Serge Gainsbourg ?', ['Nous les amoureux', 'L\'oiseau et l\'enfant', 'Poupée de cire, poupée de son', 'Ne partez pas sans moi'], 'Poupée de cire, poupée de son'),
+      new Question('De quel pays est originaire le groupe ABBA ?', ['Allemagne', 'Pays-bas', 'Suède', 'Finlande'], 'Suède'),
+      new Question('Qui est l’interprète de la chanson “Savoir aimer” ?', ['Daniel Balavoine', 'Florent Pagny', 'Michel Sardou', 'Joe Dassin'], 'Florent Pagny'),
+      new Question('Avec quelle chanteuse française Andrea Bocelli interprète “Vivo per lei” en 1997 ?', ['Mireille Mathieu', 'Hélène Ségara', 'Julie Piétri', 'Sylvie Vartan'], 'Hélène Ségara'),
+      new Question('Qui a composé et écrit “Pour que tu m’aimes encore”, chantée par Céline Dion en 1995 ?', ['Jean-Jacques Goldman', 'Pascal Obispo', 'Johnny Hallyday', 'Julien Clerc'], 'Jean-Jacques Goldman'),
+      new Question('De quelle comédie musicale est extraite la chanson “Belle”, interprétée par Garou, Daniel Lavoie et Patrick Fiori ?', ['Les dix Commandements', 'Roméo et Juliette', 'Le Roi Soleil', 'Notre Dame de Paris'], 'Notre Dame de Paris'),
+      new Question('De quelle chanson de Johnny Hallyday sont extraites ces paroles : “j’y crois comme à ta peau, à tes bras qui me serrent…” ?', ['Laura', 'Je te promets', 'Gabrielle', 'Sang pour sang'], 'Je te promets'),
+      new Question('Quel groupe interprète la chanson d’amour “Still loving you” en 1984 ?', ['Les Eagles', 'Nirvana', 'Les Rolling Stones', 'Scorpions'], 'Scorpions'),
+      new Question('Quelle chanteuse a repris la chanson de Francis Cabrel “Je l’aime à mourir” en 2011 ?', ['Tina Arena', 'Céline Dion', 'Shakira', 'Madonna'], 'Shakira'),
+      new Question('De quel film, la chanson d\'amour "Love Me Like You Do" d\'Ellie Goulding est-elle la bande originale ?', ['Le Journal de Bridget Jones', '50 Nuances de Grey', 'Love Actually', 'Coup de foudre à Notting Hill'], '50 Nuances de Grey'),
+      new Question('Quelle chanson culte de Queen est illustrée par un clip où les membres du groupe sont grimés en femme au foyer ?', ['Another one bites the dust', 'Friends will be friends', 'it\'s a kind of magic', 'I want to break free'], 'I want to break free'),
+      new Question('Qui est l’auteur de la “Chanson des restos” en 1986 ?', ['Coluche', 'Jean-Jacques Goldman', 'Renaud', 'Michel Berger'], 'Jean-Jacques Goldman'),
+      new Question('Quel est le premier succès musical de la chanteuse Céline Dion en 1981 ?', ['D\'amour ou d\'amitié', 'Ce n\'était qu\'un rêve', 'Ne partez pas sans moi', 'L\'amour viendra'], 'Ce n\'était qu\'un rêve'),
+      new Question('Quelle chanson est considérée comme le premier tube de rap français en 1981 ?', ['Je danse le Mia', 'Chacun fait ce qu\'il lui plaît', 'Bouge de là', 'Paris Latino'], 'Chacun fait ce qu\'il lui plaît'),
+      new Question('Quel type de bonbon n’est pas cité dans la chanson Mistral Gagnant de Renaud ?', ['Car-en-sac', 'Roudoudou', 'Carambar', 'Pimousse'], 'Pimousse'),
+      new Question('')
     ];
     break;
 
@@ -418,7 +443,18 @@ function startGameWithCategory(category, callback) {
       new Question('Combien de temps faut-il généralement à un paresseux pour parcourir 1 km ?', ['4 jours', '1 semaine', '2 semaines', 'Plus d\'un mois'], 'Plus d\'un mois'),
       new Question('Quels animaux ont une forte libido et des comportements violents avec les femelles qui peuvent s\'apparenter à des viols ?', ['Les pandas', 'Les Kangourous', 'Les dauphins', 'Les écureuils'], 'Les dauphins'),
       new Question('Quel est l\’animal terrestre le plus rapide du monde ?', ['L\'autruche', 'L\'antilope', 'Le kangourou', 'Le guépard'], 'Le guépard'),
+      new Question('De quel arbre proviennent les feuilles dont les koalas sont très friands ?', ['Araucacia', 'Niaouli', 'Bambou', 'Eucalyptus'], 'Eucalyptus'),
       new Question('Lequel de ces oiseaux ne vole pas ?', ['Le toucan', 'Le kiwi', 'Le macareux', 'Le colibri'], 'Le kiwi'),
+      new Question('Lequel de ces légumes ne fait pas partie de la famille des légumes-tiges ?', ['Le poireau', 'La rhubarbe', L\'asperge', 'Le concombre'], 'Le concombre'),
+      new Question('Que fait la mante religieuse après l\'accouplement ?', ['Elle meurt', 'Elle dévore le mâle', 'Elle mue', 'Elle devient reine'], 'Elle dévore le mâle'),
+      new Question('À quelle famille animale présente exclusivement en Afrique, le lycaon appartient-il ?', ['Canidés', 'Camélidés', 'Félidés', 'Equidés'], 'Canidés'),
+      new Question('Quel serpent d’Afrique est considéré comme le serpent le plus dangereux au monde ?', ['Python de Seba', 'Vipère heurtante', 'Mamba noir', 'Cobra du Mozambique'], 'Mamba noir'),
+      new Question('Quel est l’animal le plus dangereux d’Afrique, qui fait le plus de morts chaque année ?', ['Crocodile du Nil', 'Lion', 'Hippopotame', 'Eléphant'], 'Hippopotame'),
+      new Question('Sous quel arbre n’est-il pas recommandé de garer une voiture en période de floraison ?', ['Le sapin', 'Le cerisier', 'Le tilleul', 'Le marronnier'], 'Le tilleul'),
+      new Question('Combien de cornes possèdent les rhinocéros d’Afrique ?', ['Aucune', '1', '2', '3'], '2'),
+      new Question('Quel légume est appelé chicon dans le Nord de la France ?', ['L\'endive', 'Le salsifi', 'Le radis', 'Le poireau'], 'L\'endive'),
+      new Question('Comment appelle-t-on les anneaux concentriques sur les troncs des arbres coupés ?', ['Spirales', 'Ellipses', 'Cernes', 'Boucles'], 'Cernes'),
+      new Question('Quelle est la hauteur du plus grand arbre du monde, le sequoia californien nommé l’Hyperion ?', ['76 mètres', '104 mètres', '116 mètres', '131 mètres'], '116 mètres'),
       new Question('Que fait la mante religieuse après l\'accouplement ?', ['Elle meurt', 'Elle dévore le mâle', 'Elle mue', 'Elle devient reine'], 'Elle dévore le mâle'),
     ];
     break;
