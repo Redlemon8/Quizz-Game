@@ -141,8 +141,23 @@ button {
     display: block;
 }
 
-#points {
+.point:first-child {
+    display: block;
+}
+
+#points-container-one-player.point {
     color: #1E00FF;
+    text-align: center;
+}
+
+#points-container-player-one {
+    color: #1E00FF;
+    text-align: center;
+}
+
+#points-container-player-two {
+    color: #1E00FF;
+    text-align: center;
 }
 
 #timer {
@@ -153,7 +168,7 @@ button {
     padding-top: 5rem;
 }
 
-#show-result {
+#show-result, #player-switched {
     color: white;
     font-size: 2rem;
     text-align: center;

@@ -4,17 +4,13 @@ function Question(question, options, answer) {
   this.answer = answer;
 }
 
+// DOM elements
 const onePlayerButton = document.getElementById('one-player');
 const twoPlayerButton = document.getElementById('two-player');
 const playerSelection = document.getElementById('player-selection');
 
 const categorySelection = document.getElementById('category-selection');
-const category1Button = document.getElementById('category-1');
-const category2Button = document.getElementById('category-2');
-const category3Button = document.getElementById('category-3');
-const category4Button = document.getElementById('category-4');
-const category5Button = document.getElementById('category-5');
-const category6Button = document.getElementById('category-6');
+const categoryButtons = document.querySelectorAll('#category-selection button');
 
 const questionContainer = document.getElementById('question-container');
 const questionText = document.getElementById('question-text');
@@ -22,223 +18,72 @@ const optionsList = document.getElementById('options-list');
 const optionButtons = document.querySelectorAll('#category-selection button');
 const answer = document.getElementById('answer-text');
 const showResult = document.getElementById('show-result');
-const pointsConpt = document.getElementById('points');
+const pointsContainerOnePlayer = document.getElementById('points-container-one-player');
+const pointsContainerPlayerOne = document.getElementById('points-container-player-one');
+const pointsContainerPlayerTwo = document.getElementById('points-container-player-two');
 const returnMenu = document.getElementById('return-menu');
 const returnCategory = document.getElementById('return-category');
 const resultText = document.getElementById('result-text');
+const switchedMessage = document.getElementById('switched-message');
+const nextPlayer = document.getElementById('next-player');
 
+// Game state variables
 let currentQuestionIndex = 0;
 let currentCategoryQuestions;
 let points = 0;
+let pointsPlayer1 = 0;
+let pointsPlayer2 = 0;
 const questionsPerRound = 20;
-let pointsPlayerOne = 0;
-let pointsPlayerTwo = 0;
+const players = ['Player 1', 'Player 2'];
+let currentPlayerIndex = 0;
+//let pointsPlayerOne = 0;
+//let pointsPlayerTwo = 0;
 let numberOfPlayers;
-const playerOne = 'player-one';
-const playerTwo = 'player-two';
+//const playerOne = 'player-one';
+//const playerTwo = 'player-two';
 let currentPlayer = [];
 let selectedCategory;
 
-// Fonction pour afficher une étape spécifique
+// Function to show a specific step
 function showStep(step) {
-  // Masquer toutes les étapes
-  playerSelection.style.display = 'none';
-  categorySelection.style.display = 'none';
-  questionContainer.style.display = 'none';
-  pointsConpt.style.display = 'none';
-  showResult.style.display ='none';
-  returnCategory.style.display = 'none';
-
-  //timerEl.style.display = 'none';
-
-  // Afficher l'étape spécifique
-  if (step === 'player-selection') {
-    playerSelection.style.display = 'block';
-  } else if (step === 'category-selection') {
-    categorySelection.style.display = 'block';
-  } else if (step === 'question-container') {
-    questionContainer.style.display = 'block';
-    pointsConpt.style.display = 'block';
-    //timerEl.style.display = 'block';
-  } else if (step === 'show-result'){
-    showResult.style.display = 'block';
-    returnCategory.style.display = 'block';
-  }
+  const steps = ['player-selection', 'category-selection', 'question-container', 'show-result', 'player-switched'];
+  steps.forEach(s => document.getElementById(s).style.display = 'none');
+  document.getElementById(step).style.display = 'block';
 }
 
-// Appel initial pour afficher la première étape
+function showPoints(point) {
+  const allPoints = ['points-container-one-player', 'points-container-player-one', 'points-container-player-two'];
+  allPoints.forEach(s => document.getElementById(s).style.display = 'none');
+  document.getElementById(point).style.display = 'block';
+}
+
+// Initial display
 showStep('player-selection');
 
 
-// gestionnaires d'événement pour le choix du nombre de joueur
+// Event listeners
 onePlayerButton.addEventListener('click', () =>{
-  //playerSelection.style.display = 'none';
-  //timerEl.style.display = 'none';
   showStep('category-selection');
+  showPoints('points-container-one-player');
   numberOfPlayers = 'one-player';
-  startGameNumberOfPlayer(numberOfPlayers);
+  pointsContainerOnePlayer.classList.add('points');
 });
 
 twoPlayerButton.addEventListener('click', () =>{
-  //playerSelection.style.display = 'none';
-  //timerEl.style.display = 'none';
   showStep('category-selection');
+  showPoints('points-container-player-one');
+  showPoints('points-container-player-two');
   numberOfPlayers = 'two-player';
-  startGameNumberOfPlayer(numberOfPlayers);
-
-  //time = 60;
+  pointsContainerPlayerOne.classList.add('points-container-player-one');
+  pointsContainerPlayerTwo.classList.add('points-container-player-two');
 });
 
-function startGameNumberOfPlayer(numberOfPlayers) {
-  console.log('Entering startGameNumberOfPlayer');
-  playerSelection.style.display = 'none';
-    showStep('category-selection');
-  
-    if (numberOfPlayers === 'one-player') {
-      console.log('One player mode selected');
-    startGameWithCategory();
-  } else if (numberOfPlayers === 'two-player'){
-    console.log('Two player mode selected');
-    // Commencer le tour du joueur 1
-    roundOne();
-      console.log('Congratulations, the game is finished');
-  }
-}
-
-
-/*async function startPlayerTurn() {
-  for (let i = 0; i < 2; i++) {
-    const currentPlayer = i === 0 ? 'player-one' : 'player-two';
-    console.log(`Starting turn for ${currentPlayer}`);
-
-    await playPlayerTurn(currentPlayer);
-  }
-    console.log('Congratulation');
-  }*/
-
-  function roundOne (callback) {
-    console.log('Round one start');
-    currentPlayer = ['player-one', 'palyer-two'];
-    let index = 0;
-    playPlayerTurn(currentPlayer, index, callback);
-  }
-
-  function playPlayerTurn (currentPlayer, index, callback) {
-    console.log('start player turn');
-    if (index < currentPlayer.length) {
-      console.log(`Index player is ${index}`);
-      startGameWithCategory(selectedCategory, callback);
-      index ++;
-      playPlayerTurn(currentPlayer, index, callback);
-    } else {
-      console.log('callback launch');
-      callback();
-    }
-  }
-
-/*async function playPlayerTurn(currentPlayer) {
-  console.log(`Entering play ${currentPlayer} turn`);
-  await waitForCategorySelection();
-  console.log(`await ${currentPlayer} choose is category`);
-  startGameWithCategory(selectedCategory);
-  endTurn();
-}
-
-function waitForCategorySelection(currentPlayer) {
-  console.log(`Waiting for category selection by ${currentPlayer}`);
-  return new Promise((resolve) => {
-
-    const categoryButtons = document.querySelectorAll('#category-selection');
-    categoryButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        selectedCategory = button.id;
-        resolve();
-        console.log('Category selected by player');
-      });
-    });
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    showStep('question-container');
+    startGameWithCategory(button.id);
+    currentQuestionIndex = 0;
   });
-}
-
-function endTurn() {
-  console.log('end turn');
-
-  if (currentQuestionIndex === questionsPerRound) {
-    if (currentPlayer === playerOne && numberOfPlayers === 'two-player') {
-      currentPlayer = playerTwo;
-      startPlayerTurn();
-    } else {
-      console.log('Round completed');
-      console.log(`${'player-one'} got ${'player-one'.points}/20`);
-      console.log(`${'player-two'} got ${'player-two'.points}/20`);
-    }
-  }
-}*/
-
-category1Button.addEventListener('click', () =>{
-  console.log('Category one selected');
-  selectedCategory = 'category-1';
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
-});
-
-category2Button.addEventListener('click', () =>{
-  console.log('Vous avez choisi la catégorie 2 !');
-  selectedCategory = 'category-2';
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
-});
-
-category3Button.addEventListener('click', () =>{
-  console.log('Vous avez choisi la catégorie 3 !');
-  selectedCategory = 'category-3';
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
-});
-
-category4Button.addEventListener('click', () =>{
-  console.log('Vous avez choisi la catégorie 4 !');
-  selectedCategory = 'category-4';
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
-});
-
-category5Button.addEventListener('click', () =>{
-  console.log('Vous avez choisi la catégorie 5 !');
-  selectedCategory = 'category-5'
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
-
-});
-
-category6Button.addEventListener('click', () =>{
-  console.log('Vous avez choisi la catégorie 6 !');
-  selectedCategory = 'category-6'
-  categorySelection.style.display = 'none';
-  //timerEl.style.display = 'none';
-  showStep('question-container');
-  startGameWithCategory(selectedCategory);
-  //time = 60;
-  currentQuestionIndex = 0;
 });
 
 returnMenu.addEventListener('click', () =>{
@@ -267,31 +112,22 @@ returnCategory.addEventListener('click', () => {
   currentQuestionIndex = 0;
 });
 
-
-function shuffleArray(array) {
-  if (array && array.length) {
-    for (let i = array.length -1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-   }
-  }
-}
-
-function selectionOfTwentyQuestions(questionsPerRound) {
-  console.log('entering selectionOfTwentyQuestions');
-  const selectedQuestions = [];
-
-if (currentCategoryQuestions && currentCategoryQuestions.length) {
-  for (let i = 0; i < questionsPerRound && i < currentCategoryQuestions.length; i++) {
-    selectedQuestions.push(currentCategoryQuestions[i]);
-  }
-}
-
-  currentCategoryQuestions = selectedQuestions;
-}
+nextPlayer.addEventListener('click', () => {
+  playerSelection.style.display = 'none';
+  categorySelection.style.display = 'block';
+  questionContainer.style.display = 'none';
+  showResult.style.display = 'none';
+  //timerEl.style.display = 'none';
+  pointsPlayer2 = 0;
+  document.getElementById('points-player-two').textContent = `Points joueur 2: ${points}`;
+  //time = 60;
+  currentQuestionIndex = 0;
+});
 
 
-function startGameWithCategory(category, callback) {
+
+// Game functions
+function startGameWithCategory(category) {
     //startTimer();
     console.log('Entering startGameWithCategory');
   console.log('Category:', category);
@@ -462,10 +298,7 @@ function startGameWithCategory(category, callback) {
     shuffleArray(currentCategoryQuestions);
     selectionOfTwentyQuestions(questionsPerRound);
     displayCurrentQuestion();
-    callback();
 }
-
-
 
 function displayCurrentQuestion() {
   console.log('Entering displayCurrentQuestion');
@@ -495,51 +328,76 @@ function checkAnswer(selectedIndex) {
     console.log('Correct answer!');
     answer.textContent = `Bravo ! ${currentQuestion.options[selectedIndex]} est la bonne réponse !`;
     questionContainer.classList.add('correct');
-    points++;
-    document.getElementById('points').textContent = `Points : ${points}`;
+
+    // Update points based on the number of players
+    if (numberOfPlayers === 'one-player') {
+      points++;
+      document.getElementById('points-container-one-player').textContent = `Points : ${points}`;
+    } else if (numberOfPlayers === 'two-player') {
+      if (currentPlayerIndex === 0) {
+        pointsPlayer1++;
+        document.getElementById('points-player-one').textContent = `Points joueur 1 : ${pointsPlayer1}`;
+      } else if (currentPlayerIndex === 1) {
+        pointsPlayer2++;
+        document.getElementById('points-player-two').textContent = `Points joueur 2 : ${pointsPlayer2}`;
+      }
+    }
   } else {
     console.log('Incorrect answer.');
     answer.textContent = `Désolé, la bonne réponse était ${currentQuestion.answer}`;
     questionContainer.classList.add('incorrect');
   }
-  
-  //supprimer la class après une seconde
+
+  // Remove the class after one second
   setTimeout(() => {
-    console.log('Timeout executed.');
     questionContainer.classList.remove('correct', 'incorrect');
-    answer.textContent = '';
     currentQuestionIndex++;
 
-    // Check if there are more questions remaining for the current player
     if (currentQuestionIndex < currentCategoryQuestions.length) {
-      // Display the next question
-      console.log('Displaying next question from checkAnswer.');
       displayCurrentQuestion();
     } else {
-      // The questions are finished for the current player
-      // Move on to the next player or end the game
-      if (numberOfPlayers === 'one-player') {
-        console.log('Game finished for one player.');
-        showStep('show-result');
-        resultText.textContent = `Félicitation vous avez terminé ! Vous avez obtenu un résultat de ${points}/${currentQuestionIndex}`;
-        
-        // Commence the turn of player 2
-      } else if (numberOfPlayers === 'two-player'){
-        if (currentPlayer === 'player-one') {
-          showStep('show-result');
-          resultText.textContent = `Félicitation joueur 1 vous avez terminé ! Vous avez obtenu un résultat de ${points}/${currentQuestionIndex}`;
-        }
-        // Both players have completed their turns, show the game result
-        console.log('Both players have completes their turns');
-        showStep('show-result');
-        resultText.textContent = `Félicitation les deux joueurs ont terminé`;
-      } else {
-        console.log('Moving on to the next player\'s turn');
-        startPlayerTurn();
-      }
-     }
-    }, 1000); // Adjust the delay as needed*/
+      endOfRound();
+    }
+  }, 1000);
 }
+
+
+function endOfRound() {
+  if (numberOfPlayers === 'one-player') {
+    showStep('show-result');
+    resultText.textContent = `Félicitation vous avez terminé ! Vous avez obtenu un résultat de ${points}/${currentQuestionIndex}`;
+  } else if (numberOfPlayers === 'two-player') {
+    // Switch player
+    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+
+    showStep('player-switched');
+    switchedMessage.textContent = `C\'est maintenant le tour de ${players[currentPlayerIndex]}.`;
+  }
+}
+
+function shuffleArray(array) {
+  if (array && array.length) {
+    for (let i = array.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+   }
+  }
+}
+
+function selectionOfTwentyQuestions(questionsPerRound) {
+  console.log('entering selectionOfTwentyQuestions');
+  const selectedQuestions = [];
+
+if (currentCategoryQuestions && currentCategoryQuestions.length) {
+  for (let i = 0; i < questionsPerRound && i < currentCategoryQuestions.length; i++) {
+    selectedQuestions.push(currentCategoryQuestions[i]);
+  }
+}
+
+  currentCategoryQuestions = selectedQuestions;
+}
+
+
   /*setTimeout(() => {
     questionContainer.classList.remove('correct');
     questionContainer.classList.remove('incorrect');
